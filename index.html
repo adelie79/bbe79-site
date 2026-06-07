@@ -202,113 +202,6 @@
       display: block;
     }
 
-    /* ── Countdown ── */
-    .countdown-bar {
-      height: 3px;
-      background: var(--beige-dark);
-      border-radius: 2px;
-      overflow: hidden;
-      margin: 2rem 0 0;
-    }
-
-    .countdown-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--teal-light), var(--green));
-      border-radius: 2px;
-      width: 0%;
-      transition: width linear;
-    }
-
-    .countdown-label {
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--text-light);
-      margin-top: 0.5rem;
-    }
-
-    /* ── Video section ── */
-    .video-section {
-      margin-top: 3rem;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      pointer-events: none;
-    }
-
-    .video-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .video-section-inner {
-      background: var(--white);
-      border-radius: 1.5rem;
-      box-shadow: 0 4px 40px rgba(43, 120, 120, 0.12);
-      border: 1px solid var(--beige-dark);
-      overflow: hidden;
-    }
-
-    .video-header {
-      background: linear-gradient(135deg, var(--teal) 0%, var(--green) 100%);
-      padding: 1.75rem 2rem;
-      text-align: center;
-    }
-
-    .video-header .video-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(255,255,255,0.2);
-      border-radius: 2rem;
-      padding: 0.35rem 1rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .video-badge span {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--white);
-    }
-
-    .video-header h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-      font-weight: 300;
-      color: var(--white);
-      line-height: 1.3;
-    }
-
-    .video-header h2 em { font-style: italic; }
-
-    .video-responsive {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      background: #111;
-    }
-
-    .video-responsive iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: none;
-    }
-
-    .video-footer {
-      padding: 1.25rem 2rem;
-      text-align: center;
-      background: var(--teal-pale);
-    }
-
-    .video-footer p {
-      font-size: 0.85rem;
-      color: var(--teal);
-      font-weight: 400;
-    }
-
     /* ── Footer ── */
     footer {
       background: var(--white);
@@ -332,8 +225,7 @@
 
       .features { grid-template-columns: 1fr; }
 
-      .form-card-header,
-      .video-footer { padding: 1.25rem; }
+      .form-card-header { padding: 1.25rem; }
     }
   </style>
 </head>
@@ -400,66 +292,12 @@
       </div>
     </div>
 
-    <!-- Countdown indicator -->
-    <div class="countdown-bar" id="countdownBar" aria-hidden="true">
-      <div class="countdown-fill" id="countdownFill"></div>
-    </div>
-    <p class="countdown-label" id="countdownLabel">Votre routine s'affichera dans quelques instants…</p>
-
-    <!-- Video section (hidden by default, revealed after 5 s) -->
-    <section class="video-section" id="videoSection" aria-label="Votre routine Pilates offerte">
-      <div class="video-section-inner">
-        <div class="video-header">
-          <div class="video-badge">
-            <span>&#x25B6;&nbsp; Votre routine gratuite</span>
-          </div>
-          <h2>Votre routine Pilates<br /><em>vous attend !</em></h2>
-        </div>
-        <div class="video-responsive">
-          <iframe
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-            title="Votre routine Pilates – BBE79"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="video-footer">
-          <p>&#x1F4AC; Vous avez aimé ? Des questions ? Contactez-nous à <strong>contact@bbe79.fr</strong></p>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <!-- ── Footer ── -->
   <footer>
     <p>&copy; 2026 BBE79 – Bouger Bien Etre &nbsp;|&nbsp; Tous droits réservés</p>
   </footer>
-
-  <script>
-    (function () {
-      const DELAY_MS = 5000;
-      const videoSection  = document.getElementById('videoSection');
-      const countdownFill = document.getElementById('countdownFill');
-      const countdownLabel = document.getElementById('countdownLabel');
-      const countdownBar  = document.getElementById('countdownBar');
-
-      requestAnimationFrame(function () {
-        countdownFill.style.transition = 'width ' + DELAY_MS + 'ms linear';
-        countdownFill.style.width = '100%';
-      });
-
-      setTimeout(function () {
-        videoSection.classList.add('visible');
-        countdownBar.style.display = 'none';
-        countdownLabel.style.display = 'none';
-        setTimeout(function () {
-          videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 400);
-      }, DELAY_MS);
-    })();
-  </script>
 
 </body>
 </html>
