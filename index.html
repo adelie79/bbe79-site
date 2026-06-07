@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BBE79 – Votre cours de Pilates offert</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --sage: #8a9e8a;
+      --sage-light: #b5c9b5;
+      --sage-pale: #e8f0e8;
+      --beige: #f5f0e8;
+      --beige-dark: #e8dfd0;
+      --white: #ffffff;
+      --text-dark: #3a3a3a;
+      --text-mid: #5a5a5a;
+      --text-light: #8a8a8a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--beige);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--beige-dark);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-wrapper img {
+      height: 64px;
+      width: auto;
+      display: block;
+    }
+
+    .logo-fallback {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--sage);
+      text-transform: uppercase;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 4rem 1.5rem 2.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      background: var(--sage-pale);
+      border-radius: 2rem;
+      padding: 0.35rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.25;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .hero p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ── Decorative divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      max-width: 220px;
+      margin: 2rem auto;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--beige-dark);
+    }
+
+    .divider-leaf {
+      font-size: 1rem;
+      color: var(--sage-light);
+    }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    /* ── Form card ── */
+    .form-card {
+      background: var(--white);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 40px rgba(138, 158, 138, 0.12);
+      overflow: hidden;
+      border: 1px solid var(--beige-dark);
+    }
+
+    .form-card-header {
+      background: linear-gradient(135deg, var(--sage-pale) 0%, var(--beige) 100%);
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--beige-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .form-card-header .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--sage-light);
+    }
+
+    .form-card-header span {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+
+    .form-iframe-wrapper {
+      width: 100%;
+      background: var(--white);
+    }
+
+    .form-iframe-wrapper iframe {
+      width: 100%;
+      height: 620px;
+      border: none;
+      display: block;
+    }
+
+    /* ── Video section ── */
+    .video-section {
+      margin-top: 3rem;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      pointer-events: none;
+    }
+
+    .video-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .video-section-inner {
+      background: var(--white);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 40px rgba(138, 158, 138, 0.12);
+      border: 1px solid var(--beige-dark);
+      overflow: hidden;
+    }
+
+    .video-header {
+      background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .video-header .video-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2rem;
+      padding: 0.35rem 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .video-badge .icon {
+      font-size: 0.9rem;
+    }
+
+    .video-badge span {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .video-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .video-header h2 em {
+      font-style: italic;
+    }
+
+    .video-responsive {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      background: #111;
+    }
+
+    .video-responsive iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      background: var(--sage-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .video-footer p {
+      font-size: 0.85rem;
+      color: var(--sage);
+      font-weight: 400;
+    }
+
+    /* ── Features strip ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .feature {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      border: 1px solid var(--beige-dark);
+    }
+
+    .feature-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .feature h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .feature p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--beige-dark);
+      text-align: center;
+      padding: 1.5rem 2rem;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    /* ── Countdown indicator ── */
+    .countdown-bar {
+      height: 3px;
+      background: var(--beige-dark);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 2rem 0 0;
+    }
+
+    .countdown-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--sage-light), var(--sage));
+      border-radius: 2px;
+      width: 0%;
+      transition: width linear;
+    }
+
+    .countdown-label {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+
+      .hero {
+        padding: 2.5rem 1rem 2rem;
+      }
+
+      .form-iframe-wrapper iframe {
+        height: 720px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card-header,
+      .video-footer {
+        padding: 1.25rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="logo-wrapper">
+      <img
+        src="logo.png"
+        alt="BBE79 – Studio Pilates"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+      />
+      <span class="logo-fallback" style="display:none;">BBE79</span>
+    </div>
+  </header>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-label">&#x2728; Offre exclusive</div>
+    <h1>Accédez à votre cours de<br /><em>Pilates offert</em></h1>
+    <div class="divider"><span class="divider-leaf">&#x273F;</span></div>
+    <p>Remplissez vos coordonnées pour accéder immédiatement à votre routine Pilates gratuite.</p>
+  </section>
+
+  <!-- ── Main content ── -->
+  <main>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">&#x1F9D8;</span>
+        <h3>Accessible à tous</h3>
+        <p>Débutants comme confirmés, à votre rythme</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">&#x23F1;</span>
+        <h3>30 minutes</h3>
+        <p>Une routine complète et efficace</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">&#x1F3E0;</span>
+        <h3>Chez vous</h3>
+        <p>Sans équipement, dans votre salon</p>
+      </div>
+    </div>
+
+    <!-- Form card -->
+    <div style="margin-top: 2.5rem;">
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="dot"></div>
+          <span>Formulaire d'inscription</span>
+        </div>
+        <div class="form-iframe-wrapper">
+          <!-- Remplacer l'URL ci-dessous par l'URL d'intégration complète du formulaire Google :
+               Dans Google Forms > Envoyer > Intégrer > copier l'attribut src de l'iframe -->
+          <iframe
+            src="https://docs.google.com/forms/d/e/VOTRE_FORM_ID/viewform?embedded=true"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            title="Formulaire BBE79"
+            loading="lazy"
+          >Chargement en cours…</iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Countdown indicator -->
+    <div class="countdown-bar" id="countdownBar" aria-hidden="true">
+      <div class="countdown-fill" id="countdownFill"></div>
+    </div>
+    <p class="countdown-label" id="countdownLabel">Votre cours s'affichera dans quelques instants…</p>
+
+    <!-- Video section (hidden by default) -->
+    <section class="video-section" id="videoSection" aria-label="Cours de Pilates offert">
+      <div class="video-section-inner">
+        <div class="video-header">
+          <div class="video-badge">
+            <span class="icon">&#x25B6;</span>
+            <span>Votre cours gratuit</span>
+          </div>
+          <h2>Votre routine Pilates<br /><em>vous attend !</em></h2>
+        </div>
+        <div class="video-responsive">
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+            title="Cours de Pilates offert – BBE79"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="video-footer">
+          <p>&#x1F4AC; Des questions ? Contactez-nous à <strong>contact@bbe79.fr</strong></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>&copy; 2026 BBE79 – Association Studio Pilates &nbsp;|&nbsp; Tous droits réservés</p>
+  </footer>
+
+  <script>
+    (function () {
+      const DELAY_MS = 5000;
+      const videoSection = document.getElementById('videoSection');
+      const countdownFill = document.getElementById('countdownFill');
+      const countdownLabel = document.getElementById('countdownLabel');
+      const countdownBar = document.getElementById('countdownBar');
+
+      // Animate the progress bar over DELAY_MS
+      requestAnimationFrame(function () {
+        countdownFill.style.transition = 'width ' + DELAY_MS + 'ms linear';
+        countdownFill.style.width = '100%';
+      });
+
+      setTimeout(function () {
+        // Show the video section
+        videoSection.classList.add('visible');
+
+        // Hide the countdown UI
+        countdownBar.style.display = 'none';
+        countdownLabel.style.display = 'none';
+
+        // Smooth scroll to the video
+        setTimeout(function () {
+          videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 400);
+      }, DELAY_MS);
+    })();
+  </script>
+
+</body>
+</html>
