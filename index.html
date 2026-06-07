@@ -277,35 +277,21 @@
     }
 
     .instructor-photo {
-      background: linear-gradient(135deg, var(--teal-pale), var(--green-pale));
+      background: linear-gradient(135deg, #1a4a4a 0%, #2b7878 100%);
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
       min-height: 220px;
-      padding: 2rem 1.5rem;
+      padding: 0 1rem;
+      overflow: hidden;
     }
 
     .instructor-photo img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+      width: 160px;
+      height: auto;
+      display: block;
       object-fit: cover;
-      border: 3px solid var(--white);
-      box-shadow: 0 4px 16px rgba(43,120,120,0.2);
-    }
-
-    .instructor-photo-placeholder {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: var(--teal-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      color: var(--white);
-      border: 3px solid var(--white);
-      box-shadow: 0 4px 16px rgba(43,120,120,0.2);
+      object-position: top center;
     }
 
     .instructor-content {
@@ -539,8 +525,7 @@
       <div class="instructor-section">
         <div class="instructor-inner">
           <div class="instructor-photo">
-            <!-- Remplacer par <img src="photo-sebastien.jpg" alt="Sébastien Ribeyron"> quand la photo est disponible -->
-            <div class="instructor-photo-placeholder">&#x1F9D1;</div>
+            <img src="photo-sebastien.jpg" alt="Sébastien Ribeyron – Instructeur Pilates BBE79" />
           </div>
           <div class="instructor-content">
             <p class="instructor-label">Votre coach</p>
