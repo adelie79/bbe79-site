@@ -395,29 +395,68 @@
       color: var(--text-light);
     }
 
-    /* ── Responsive ── */
+    /* ── Responsive mobile ── */
     @media (max-width: 640px) {
-      header { padding: 1rem 1.5rem; }
 
-      .hero { padding: 2.5rem 1rem 2rem; }
+      /* Header */
+      header { padding: 0.75rem 1rem; }
+      .logo-wrapper img { height: 72px; }
 
-      .features { grid-template-columns: 1fr; }
+      /* Hero */
+      .hero {
+        padding: 2rem 1.25rem 1.75rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+        line-height: 1.2;
+      }
+      .hero p {
+        font-size: 0.95rem;
+      }
+      .divider { margin: 1.25rem auto; }
 
-      .benefits { grid-template-columns: 1fr; }
+      /* Main */
+      main { padding: 0 1rem 3rem; }
 
-      .photo-banner { height: 200px; }
+      /* Features : 1 colonne */
+      .features {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .feature { padding: 1.1rem 1rem; }
 
-      .photo-banner-overlay { padding: 1.5rem; }
+      /* Photo banner */
+      .photo-banner {
+        height: 160px;
+        border-radius: 1rem;
+        margin-top: 2rem;
+      }
+      .photo-banner-overlay {
+        padding: 1.25rem;
+        background: linear-gradient(to bottom, rgba(43,120,120,0.55) 0%, rgba(43,120,120,0.2) 100%);
+      }
+      .photo-banner-text h2 { font-size: 1.3rem; }
+      .photo-banner-text p { font-size: 0.75rem; }
 
+      /* Instructor : photo au-dessus, texte en dessous */
       .instructor-inner { grid-template-columns: 1fr; }
+      .instructor-photo {
+        min-height: 200px;
+        max-height: 240px;
+      }
+      .instructor-content { padding: 1.25rem; }
+      .instructor-name { font-size: 1.5rem; }
+      .instructor-badges { gap: 0.4rem; }
+      .badge { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
+      .instructor-bio { font-size: 0.83rem; }
 
-      .instructor-photo { min-height: 140px; padding: 1.5rem; }
+      /* Form card */
+      .form-card { margin-top: 2rem; border-radius: 1rem; }
+      .form-card-header { padding: 1rem 1.25rem; }
+      .form-iframe-wrapper iframe { min-height: 600px; }
 
-      .instructor-content { padding: 1.5rem; }
-
-      .form-iframe-wrapper iframe { min-height: 500px; }
-
-      .form-card-header { padding: 1.25rem; }
+      /* Footer */
+      footer { padding: 1.25rem 1rem; }
     }
   </style>
 </head>

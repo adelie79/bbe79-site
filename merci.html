@@ -282,12 +282,40 @@
       color: var(--text-light);
     }
 
-    /* ── Responsive ── */
+    /* ── Responsive mobile ── */
     @media (max-width: 640px) {
-      header { padding: 1rem 1.5rem; }
-      .hero { padding: 2.5rem 1rem 1.5rem; }
-      .video-card-header,
-      .contact-band { padding: 1.25rem; }
+
+      /* Header */
+      header { padding: 0.75rem 1rem; }
+      .logo-wrapper img { height: 72px; }
+
+      /* Hero */
+      .hero { padding: 1.75rem 1.25rem 1.5rem; }
+      .hero h1 { font-size: 1.9rem; line-height: 1.2; }
+      .hero p { font-size: 0.92rem; }
+      .divider { margin: 1rem auto; }
+
+      /* Main */
+      main { padding: 0 1rem 3rem; }
+
+      /* Video card */
+      .video-card { border-radius: 1rem; }
+      .video-card-header { padding: 1.25rem; }
+      .video-card-header h2 { font-size: 1.3rem; }
+
+      /* Contact band */
+      .contact-band { padding: 1rem 1.25rem; }
+      .contact-band p { font-size: 0.82rem; }
+
+      /* Benefits */
+      .benefits { grid-template-columns: 1fr; gap: 0.75rem; }
+      .benefit { padding: 1rem 1.1rem; }
+
+      /* CTA */
+      .cta-back { margin-top: 2rem; }
+
+      /* Footer */
+      footer { padding: 1.25rem 1rem; margin-top: 2rem; }
     }
   </style>
 </head>
