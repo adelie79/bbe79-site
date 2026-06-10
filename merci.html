@@ -195,6 +195,61 @@
       text-underline-offset: 3px;
     }
 
+    /* ── Section title ── */
+    .section-title {
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .section-title h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 300;
+      color: var(--text-dark);
+    }
+
+    .section-title h2 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    /* ── Benefits ── */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .benefit {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 1.4rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      border: 1px solid var(--beige-dark);
+    }
+
+    .benefit-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .benefit-text h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 0.2rem;
+    }
+
+    .benefit-text p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
     /* ── CTA retour ── */
     .cta-back {
       text-align: center;
@@ -276,6 +331,43 @@
       <div class="contact-band">
         <p>Vous avez aimé ? Des questions ?<br />
         Contactez-nous à <a href="mailto:contact.bbe79@gmail.com">contact.bbe79@gmail.com</a></p>
+      </div>
+    </div>
+
+    <!-- Benefits -->
+    <div style="margin-top: 3rem;">
+      <div class="section-title">
+        <h2>Ce que vous allez <em>ressentir</em></h2>
+      </div>
+      <div class="benefits">
+        <div class="benefit">
+          <span class="benefit-icon">&#x1F9E0;</span>
+          <div class="benefit-text">
+            <h4>Relâcher le stress</h4>
+            <p>Se recentrer, respirer, retrouver calme et sérénité en quelques minutes</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">&#x1FAB4;</span>
+          <div class="benefit-text">
+            <h4>Meilleure posture</h4>
+            <p>Moins de tensions, un corps plus aligné et plus à l'aise au quotidien</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">&#x26A1;</span>
+          <div class="benefit-text">
+            <h4>Plus d'énergie</h4>
+            <p>Un regain de dynamisme durable, dès la première séance</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">&#x1FAAB;</span>
+          <div class="benefit-text">
+            <h4>Corps renforcé</h4>
+            <p>Muscles profonds sollicités en douceur, sans risque de blessure</p>
+          </div>
+        </div>
       </div>
     </div>
 
